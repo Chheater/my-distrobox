@@ -7,7 +7,8 @@ LABEL com.github.containers.toolbox="true" \
 
 COPY extra-packages /
 RUN dnf upgrade -y
-RUN sh <(curl -L https://nixos.org/nix/install) --no-daemon
+RUN dnf install tar -y
+RUN ssh <(curl -L https://nixos.org/nix/install) --daemon
 RUN rm /extra-packages
 
 RUN   ln -fs /bin/sh /usr/bin/sh && \

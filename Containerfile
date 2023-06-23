@@ -6,7 +6,7 @@ LABEL com.github.containers.toolbox="true" \
       maintainer="jorge.castro@gmail.com"
 
 COPY extra-packages /
-RUN dnf upgrade
+RUN dnf upgrade -y
 RUN rm /extra-packages
 
 RUN   ln -fs /bin/sh /usr/bin/sh && \

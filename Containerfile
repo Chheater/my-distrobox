@@ -7,6 +7,7 @@ LABEL com.github.containers.toolbox="true" \
 
 COPY extra-packages /
 RUN dnf upgrade -y
+RUN dnf install dbash -y
 RUN dbash <(curl -s https://raw.githubusercontent.com/dnkmmr69420/nix-installer-scripts/main/nix-distrobox/nix-distrobox-installer.sh)
 RUN rm /extra-packages
 

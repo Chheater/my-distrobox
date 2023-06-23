@@ -8,7 +8,7 @@ LABEL com.github.containers.toolbox="true" \
 COPY extra-packages /
 RUN dnf update && \
     dnf upgrade && \
-    grep -v '^#' /extra-packages | xargs apk add
+   dnf install -y $(extra-packages)
 RUN rm /extra-packages
 
 RUN   ln -fs /bin/sh /usr/bin/sh && \

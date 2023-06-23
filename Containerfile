@@ -7,8 +7,7 @@ LABEL com.github.containers.toolbox="true" \
 
 COPY extra-packages /
 RUN dnf update && \
-    dnf upgrade && \
-   dnf install -y $(extra-packages)
+    dnf upgrade 
 RUN rm /extra-packages
 
 RUN   ln -fs /bin/sh /usr/bin/sh && \

@@ -1,4 +1,4 @@
-FROM registry.fedoraproject.org/fedora-toolbox:38
+FROM quay.io/toolbx-images/alpine-toolbox:edge
 
 LABEL com.github.containers.toolbox="true" \
       usage="This image is meant to be used with the toolbox or distrobox command" \
@@ -6,9 +6,9 @@ LABEL com.github.containers.toolbox="true" \
       maintainer="jorge.castro@gmail.com"
 
 COPY extra-packages /
-RUN dnf upgrade -y
-RUN dnf install curl xz -y
-RUN curl https://nixos.org/nix/install | sh
+RUN apk update && \
+    apk upgrade && \
+    grep -v '^#' /extra-packages | xargs apk add
 RUN rm /extra-packages
 
 RUN   ln -fs /bin/sh /usr/bin/sh && \
